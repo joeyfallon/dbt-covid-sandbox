@@ -1,0 +1,41 @@
+version: 2
+
+models: 
+  - name: base_table
+    description: This table pulls 100 rows from a covid dataset
+
+    columns: 
+      - name: date
+        tests:
+          - unique
+
+      - name: day
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>0'
+
+      - name: month
+        tests: 
+          - dbt_utils.expression_is_true:
+              expression: '>0'
+
+      - name: daily_confirmed_cases
+        tests: 
+          - dbt_utils.expression_is_true:
+              expression: '>=0'
+              
+      - name: daily_deaths
+        tests: 
+          - dbt_utils.expression_is_true:
+              expression: '>=0'
+
+      - name: confirmed_cases
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>=0'
+      
+      - name: deaths
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>=0'
+        

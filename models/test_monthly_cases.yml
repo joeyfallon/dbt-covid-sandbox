@@ -1,0 +1,19 @@
+version: 2
+
+models: 
+  - name: monthly_cases
+    description: description here
+
+    columns: 
+      - name: month
+        tests:
+          - not_null
+          - unique
+      - name: monthly_confirmed_cases
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>=0'
+      - name: monthly_deaths
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>=0'

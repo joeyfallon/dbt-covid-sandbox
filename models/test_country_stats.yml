@@ -1,0 +1,27 @@
+version: 2
+
+models: 
+  - name: country_stats
+    description: description here
+
+    columns: 
+      - name: country
+        tests:
+          - not_null
+          - unique
+      - name: death_count
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>=0'
+      - name: total_cases
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>=0'
+      - name: avg_deaths
+        tests: 
+          - dbt_utils.expression_is_true:
+              expression: '>=0'
+      - name: avg_cases
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>=0'       
