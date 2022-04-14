@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: covid_model1
+    description: covid location keys and date
+
+    columns:
+      - name: location_key
+        tests:
+          - not_null
+      - name: date
+        tests:
+          - unique
+          - not_null

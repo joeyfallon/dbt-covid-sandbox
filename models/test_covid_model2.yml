@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: covid_model2
+    description: ordering covid data and pulling top 5
+
+    columns:
+      - name: date
+        tests:
+          - not_null
+          - unique
+      - name: location_key
+        tests:
+          - not_null
